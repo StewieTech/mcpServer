@@ -12,7 +12,7 @@ const useMcpApi = () => {
         setResponse('');
 
         try {
-            const res = await fetch('https://your-mcp-server-endpoint.com/api', {
+            const res = await fetch('https://your-mcp-server-endpoint.com/api', { // need to replace with actual endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const useMcpApi = () => {
             return data.response;
         } catch (err: any) {
             setError(err.message);
-            return '';
+            return 'No response found to return';
         } finally {
             setLoading(false);
         }

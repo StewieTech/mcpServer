@@ -10,7 +10,9 @@ const MainScreen: React.FC = () => {
     const { sendPrompt } = useMcpApi();
 
     const handleSendPrompt = async (prompt: string) => {
+        console.log('Prompt sent:', prompt);
         const result = await sendPrompt(prompt);
+        console.log('Response received', result);
         setResponse(result);
     };
 
