@@ -4,9 +4,10 @@ import tw from 'tailwind-react-native-classnames';
 
 interface PromptInputProps {
   onSend: (prompt: string) => void;
+  disabled?: boolean;
 }
 
-const PromptInput: React.FC<PromptInputProps> = ({ onSend }) => {
+const PromptInput: React.FC<PromptInputProps> = ({ onSend, disabled }) => {
   const [prompt, setPrompt] = useState('');
 
   const handleSend = () => {
@@ -22,6 +23,7 @@ const PromptInput: React.FC<PromptInputProps> = ({ onSend }) => {
         style={tw`border border-gray-300 rounded p-2 flex-1`}
         placeholder="Type your prompt here..."
         value={prompt}
+        editable={!disabled}
         onChangeText={setPrompt}
       />
       <TouchableOpacity
