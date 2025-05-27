@@ -17,9 +17,10 @@ const pastelGradient: [ColorValue, ColorValue, ...ColorValue[]] = [
 
 const MainScreen: React.FC = () => {
   const [response, setResponse] = useState<string>('');
-  const { sendPrompt } = useMcpApi();
+  const { sendPrompt, loading } = useMcpApi();
 
   const handleSendPrompt = async (prompt: string) => {
+    setResponse(''); // Clear previous response
     const result = await sendPrompt(prompt);
     setResponse(result);
   };
@@ -43,10 +44,10 @@ const MainScreen: React.FC = () => {
                         </Text>
                     </View>
                     {/* Prompt Input */}
-                    <PromptInput onSend={handleSendPrompt} />
+                    <PromptInput onSend={handleSendPrompt} disabled={loading}/>
                     {/* Response Display */}
                     <View style={tw`w-full mt-4`}>
-                        <ResponseDisplay response={response} />
+                        <ResponseDisplay response={response} loading={loading}/>
                     </View>
                 </View>
             </SafeAreaView>
