@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Animated } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 
 interface ResponseDisplayProps {
@@ -7,14 +7,29 @@ interface ResponseDisplayProps {
 }
 
 const ResponseDisplay: React.FC<ResponseDisplayProps> = ({ response }) => {
+  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  }, [response]);
+
   return (
-    <View style={tw`p-4 bg-white rounded-lg shadow-md`}>
+    <Animated.View
+      style={[
+        tw`rounded-2xl bg-white shadow-lg px-5 py-6 min-h-20`,
+        { opacity: fadeAnim },
+      ]}
+    >
       {response ? (
-        <Text style={tw`text-lg text-gray-800`}>{response}</Text>
+        <Text style={tw`text-base text-purple-900 font-light`}>{response}</Text>
       ) : (
-        <Text style={tw`text-lg text-gray-400`}>No response yet.</Text>
+        <Text style={tw`text-base text-gray-400 font-light`}>No response yet.</Text>
       )}
-    </View>
+    </Animated.View>
   );
 };
 
