@@ -13,7 +13,6 @@ const predefinedPrompts = [
   { id: 'select', label: 'Select a prompt...', value: '' },
   { id: 'customers', label: 'How many active customers are there?', value: 'How many active customers are there?' },
   { id: 'email', label: 'Send morning touchbase email', value: 'Send an email to sghaz.intact@gmail.com with subject, Morning touchbase. The email should be, asking the receipient to join the meeting' },
-  { id: 'claims', label: 'June claims loss value', value: 'What\'s the total loss value for claims in the month of June?' },
   { id: 'policies', label: 'Auto and Home policies value', value: 'What\'s the total value of Auto and Home policies signed this year?' },
   { id: 'jeff', label: 'Jeff Crowe\'s claims', value: 'Email me the Claims details for Jeff Crowe\'s most recent claim' },
   { id: 'custom', label: 'Custom prompt...', value: '' },
